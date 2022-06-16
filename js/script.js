@@ -401,6 +401,7 @@ jQuery(".post-comt-box textarea").on("keydown", function(event) {
 
 });//document ready end
 
+//========================TRANSLATOR========================
 // Get the button and container elements from HTML:
 const button = document.getElementById("theButton")
 const data = document.getElementById("replace-this")
@@ -411,7 +412,7 @@ const textToTranslate = [
 // Create an event listener on the button element:
 button.onclick= function(){
     // Get the reciever endpoint from Python using fetch:
-    fetch("http://127.0.0.1:5000/receiver", 
+    fetch("http://127.0.0.1:5000/translate", 
         {
             method: 'POST',
             headers: {
@@ -431,6 +432,38 @@ button.onclick= function(){
                 data.innerText = jsonResponse[0].data
 } 
 ).catch((err) => console.error(err)); } 
+//========================TRANSLATOR========================
 
 
+//========================Offensive content blocking===========================
+// Get the button and container elements from HTML:
+const submitButton = document.getElementById("submit-post")
+// Create an array of cars to send to the server:
+// Create an event listener on the button element:
+submitButton.onclick= function(){
+	const textToCheck = [
+		{ "data":document.getElementsByName("postarea")[0].value }
+	];
+    // Get the reciever endpoint from Python using fetch:
+    fetch("http://127.0.0.1:5000/offensive", 
+        {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+        // Strigify the payload into JSON:
+        body:JSON.stringify(textToCheck)}).then(res=>{
+                if(res.ok){
+                    return res.json()
+                }else{
+                    alert("something is wrong")
+                }
+            }).then(jsonResponse=>{
+                if(jsonResponse[0].data === "1"){
+					alert("Please don't use offensive content on SWYM platform")
+				}
+			} 
+).catch((err) => console.error(err)); } 
+//========================Offensive content blocking===========================
 
