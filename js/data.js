@@ -2,10 +2,8 @@
 const button = document.getElementById("theButton")
 const data = document.getElementById("info")
 // Create an array of cars to send to the server:
-const cars = [
-	{ "make":"Porsche", "model":"911S" },
-	{ "make":"Mercedes-Benz", "model":"220SE" },
-	{ "make":"Jaguar","model": "Mark VII" }
+const textToTranslate = [
+	{ "data":document.getElementById("replace-this").innerText }
 ];
 // Create an event listener on the button element:
 button.onclick= function(){
