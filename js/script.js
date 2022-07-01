@@ -467,3 +467,27 @@ submitButton.onclick= function(){
 ).catch((err) => console.error(err)); } 
 //========================Offensive content blocking===========================
 
+//========================Launching ChatBot===========================
+// Get the button and container elements from HTML:
+const chatBotButton = document.getElementById("launch-chat-bot")
+// Create an array of cars to send to the server:
+// Create an event listener on the button element:
+chatBotButton.onclick= function(){
+    // Get the reciever endpoint from Python using fetch:
+    fetch("http://127.0.0.1:5000/launchchatbot", 
+        {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+        // Strigify the payload into JSON:
+        body:JSON.stringify("")}).then(res=>{
+                if(res.ok){
+                    return res.json()
+                }else{
+                    alert("something is wrong")
+                }
+            }).then(jsonResponse=>{} 
+).catch((err) => console.error(err)); } 
+//========================Offensive content blocking===========================
