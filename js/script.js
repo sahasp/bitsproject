@@ -405,12 +405,15 @@ jQuery(".post-comt-box textarea").on("keydown", function(event) {
 // Get the button and container elements from HTML:
 const button = document.getElementById("theButton")
 const data = document.getElementById("replace-this")
-// Create an array of cars to send to the server:
-const textToTranslate = [
-	{ "data":document.getElementById("replace-this").innerText }
-];
 // Create an event listener on the button element:
 button.onclick= function(){
+	// Create an array of cars to send to the server:
+	const textToTranslate = [
+		{ 
+			"data": document.getElementById("replace-this").innerText,
+			lang: button.getAttribute("state")
+		}
+	];
     // Get the reciever endpoint from Python using fetch:
     fetch("http://127.0.0.1:5000/translate", 
         {
@@ -429,8 +432,16 @@ button.onclick= function(){
             }).then(jsonResponse=>{
                 
                 // Iterate through the data with Map and write your rendering logic:
-                data.innerText = jsonResponse[0].data
-} 
+                data.innerText = jsonResponse[0].data;
+				let state = button.getAttribute("state");
+				if(state === "fr"){
+					button.innerText = "Translate to English";
+					button.setAttribute("state", "en");
+				} else {
+					button.innerText = "Translate to French";
+					button.setAttribute("state", "fr");
+				}
+			} 
 ).catch((err) => console.error(err)); } 
 //========================TRANSLATOR========================
 
@@ -462,6 +473,8 @@ submitButton.onclick= function(){
             }).then(jsonResponse=>{
                 if(jsonResponse[0].data === "1"){
 					alert("Please don't use offensive content on SWYM platform")
+				} else {
+					alert("Text seems okay")
 				}
 			} 
 ).catch((err) => console.error(err)); } 
