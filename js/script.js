@@ -504,3 +504,38 @@ chatBotButton.onclick= function(){
             }).then(jsonResponse=>{} 
 ).catch((err) => console.error(err)); } 
 //========================Offensive content blocking===========================
+
+//========================TRANSLATOR========================
+// Get the button and container elements from HTML:
+const summarizeButton = document.getElementById("theSummarizeButton")
+const dataToReplace = document.getElementById("replace-this")
+// Create an event listener on the button element:
+summarizeButton.onclick= function(){
+	// Create an array of cars to send to the server:
+	const textToSummarize = [
+		{ 
+			"data": document.getElementById("replace-this").innerText
+		}
+	];
+    // Get the reciever endpoint from Python using fetch:
+    fetch("http://127.0.0.1:5000/summarize", 
+        {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+        // Strigify the payload into JSON:
+        body:JSON.stringify(textToSummarize)}).then(res=>{
+                if(res.ok){
+                    return res.json()
+                }else{
+                    alert("something is wrong")
+                }
+            }).then(jsonResponse=>{
+                
+                // Iterate through the data with Map and write your rendering logic:
+                dataToReplace.innerText = jsonResponse[0].data;
+			} 
+).catch((err) => console.error(err)); } 
+//========================TRANSLATOR========================

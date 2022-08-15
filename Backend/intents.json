@@ -21,7 +21,7 @@
         },
         {"tag": "options",
          "patterns": ["How you could help me?", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
-         "responses": ["I can guide you through Adverse drug reaction list, Blood pressure tracking, Hospitals and Pharmacies", "Offering support for Adverse drug reaction, Blood pressure, Hospitals and Pharmacies"],
+         "responses": ["I can guide you through Adverse drug reaction list, Blood pressure tracking, Hospitals and Pharmacies for the clinical trials done", "Offering support for Adverse drug reaction, Blood pressure, Hospitals and Pharmacies for the clinical trials done"],
          "context": [""]
         },
         {"tag": "adverse_drug",
@@ -49,24 +49,24 @@
          "responses": ["Please provide pharmacy name"],
          "context": ["search_pharmacy_by_name"]
         },
-        {"tag": "search_pharmacy_by_name",
+        {"tag": "search_zone_by_name",
          "patterns": [],
          "responses": ["Loading pharmacy details"],
          "context": [""]
         },
         {"tag": "hospital_search",
-         "patterns": ["Lookup for hospital", "Searching for hospital to transfer patient", "I want to search hospital data", "Hospital lookup for patient", "Looking up hospital details" ],
+         "patterns": ["Lookup for hospital", "Searching for hospital to transfer subject", "I want to search hospital data", "Hospital lookup for subject", "Looking up hospital details" ],
          "responses": ["Please provide hospital name or location"],
          "context": ["search_hospital_by_params"]
         },
-        {"tag": "search_hospital_by_params",
+        {"tag": "search_data_by_params",
          "patterns": [],
-         "responses": ["Please provide hospital type"],
-         "context": ["search_hospital_by_type"]
+         "responses": ["Please provide trial type"],
+         "context": ["search_clinical_data_by_type"]
         },
-        {"tag": "search_hospital_by_type",
-         "patterns": [],
-         "responses": ["Loading hospital details"],
+        {"tag": "search_clinical_data_by_type",
+         "patterns": ["Lookup for my clinical trials"],
+         "responses": ["Loading clinical trial details for Robert McMohan..."],
          "context": [""]
         }
    ]
