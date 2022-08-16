@@ -570,9 +570,12 @@ rpButton.onclick= function(){
             }).then(jsonResponse=>{
                 let arrData = jsonResponse[0].data.split("\n");
 				arrData.pop();
+				let newDiv2 = document.createElement( 'h2' );
+				newDiv2.innerText = "Related Posts:"
+				let newDiv1 = document.createElement( 'div' );
+				newDiv1.append(newDiv2);
                 // Iterate through the data with Map and write your rendering logic:
 				arrData.forEach((ob)=>{
-					let newDiv1 = document.createElement( 'div' );
 					let newDiv = document.createElement( 'a' );
 					newDiv.id = "new1";
 					newDiv.target="_blank";
