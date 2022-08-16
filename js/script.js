@@ -575,6 +575,7 @@ rpButton.onclick= function(){
 					let newDiv1 = document.createElement( 'div' );
 					let newDiv = document.createElement( 'a' );
 					newDiv.id = "new1";
+					newDiv.target="_blank";
 					newDiv.href="https://www.jaguar.in/index.html";
 					newDiv.innerHTML = ob.substring(ob.indexOf("     ") + 5, ob.length);
 					newDiv1.appendChild(newDiv);
